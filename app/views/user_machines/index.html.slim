@@ -1,11 +1,17 @@
 h1 所有マシン一覧
 
-ul 
+ul
   -@machines.each do |machine|
     li
-      -shop = @shops[machine[:shop_id]]
-      p 
-        =machine[:machine_name]
+      -shop = @shops_hash[machine["ANKSHOPID"]]
       p
-        =shop[:address]
-      = link_to '詳細ページ', "/user_machines/#{machine[:shop_id]}/#{machine[:machine_id]}"
+        =machine["ANKMACHINENUM"]
+      p
+        =machine["MIXPARTNUM"]
+      p
+        =machine["KNJMACHNAME"]
+      p
+        =shop["KNJSHOPNAME"]
+      p
+        ="#{shop["KNJPREFECTURES"]}#{shop["KNJADDRESS"]}"
+      = link_to '詳細ページ', "/user_machines/#{machine['ANKSHOPID']}/#{machine['ANKMACHINENUM']}"

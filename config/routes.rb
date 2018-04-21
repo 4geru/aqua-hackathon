@@ -11,7 +11,13 @@ Rails.application.routes.draw do
   # for user
   mount Nyauth::Engine => "/"
   resource :user, only: %i(edit update)
-  resources :user_machines, only: %i(index show)
+  resources :user_machines, only: %i(index)
   get "user_machines/:shop_id/:machine_id" => "user_machines#show"
+  resources :shops, only: %(show) do
+    member do
+      get 'outer_image'
+      get 'inner_image'
+    end
+  end
   root 'home#show'
 end
