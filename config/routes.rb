@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   # for user
   mount Nyauth::Engine => "/"
+  resource :user, only: %i(edit update)
+  resources :user_machines, only: %i(index show)
 
   root 'home#show'
 end

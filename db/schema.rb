@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_21_054641) do
+ActiveRecord::Schema.define(version: 2018_04_21_081556) do
 
   create_table "admins", force: :cascade do |t|
     t.string "nickname"
@@ -25,6 +25,14 @@ ActiveRecord::Schema.define(version: 2018_04_21_054641) do
     t.index ["reset_password_key"], name: "index_admins_on_reset_password_key", unique: true
   end
 
+  create_table "user_machines", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "machine_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_machines_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "nickname"
     t.string "email", null: false
@@ -37,6 +45,7 @@ ActiveRecord::Schema.define(version: 2018_04_21_054641) do
     t.datetime "confirmation_key_expired_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "owner_id"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
