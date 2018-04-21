@@ -1,1 +1,10 @@
 h1 所有マシン一覧
+
+ul 
+  -@machines.each do |machine|
+    li
+      -shop = @shops[machine[:shop_id]]
+      p 
+        =machine[:machine_name]
+      p
+        =shop[:address]

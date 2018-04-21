@@ -11,15 +11,15 @@ machine = {:shop_id=>"11000123", :shop_owner_id=>"46228846", :machine_id=>"01", 
 path = "machinedetailsinfo?ANKOWNERID=#{machine[:shop_owner_id]}&ANKSHOPID=#{machine[:shop_id]}&ANKMACHINENUM=#{machine[:machine_id]}"
 r = RestClient.get root + path, {:Authorization => "Bearer #{token}"}
 data = JSON.parse(r)['DataModel'][0]
+p data
 
-
-# == get machine detail info == 
+# == get machine image info == 
 path = "machineimage?ANKOWNERID=#{machine[:shop_owner_id]}&ANKSHOPID=#{machine[:shop_id]}&ANKMACHINENUM=#{machine[:machine_id]}"
 r = RestClient.get root + path, {:Authorization => "Bearer #{token}"}
 data = JSON.parse(r)['DataModel'][0]
   
-p data['BINMACHINEIMAGE']
+# p data['BINMACHINEIMAGE']
 
-File.open("hoge.bmp", "wb") do |f| 
-    f.write(Base64.decode64(data['BINMACHINEIMAGE']))
-end
+# File.open("hoge.bmp", "wb") do |f| 
+#     f.write(Base64.decode64(data['BINMACHINEIMAGE']))
+# end
