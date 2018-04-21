@@ -1,0 +1,10 @@
+.header
+  .logo-container
+    = link_to root_path do
+      = image_tag 'common/logo_out.png', alt: 'aqua', class: 'logo-link'
+  - if current_user
+    .user-name
+      p= current_user.nickname
+    .header-setting
+      = link_to "設定", edit_user_path
+      = link_to "ログアウト", '/session', method: :delete
