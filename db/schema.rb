@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_21_081556) do
+ActiveRecord::Schema.define(version: 2018_04_21_132525) do
 
   create_table "admins", force: :cascade do |t|
     t.string "nickname"
@@ -25,11 +25,55 @@ ActiveRecord::Schema.define(version: 2018_04_21_081556) do
     t.index ["reset_password_key"], name: "index_admins_on_reset_password_key", unique: true
   end
 
+  create_table "shops", force: :cascade do |t|
+    t.string "shop_name", null: false
+    t.string "shop_kana_name", null: false
+    t.string "post_num", null: false
+    t.string "prefecture", null: false
+    t.string "address", null: false
+    t.string "address_kana", null: false
+    t.string "business_hour"
+    t.string "tel_num"
+    t.string "fax_num"
+    t.string "hp_link"
+    t.string "maintenance_man"
+    t.string "maintenance_tel_num"
+    t.string "business"
+    t.string "business_tel_num"
+    t.integer "owner_id"
+    t.string "owner_name"
+    t.integer "fc_id"
+    t.string "fc_company_name"
+    t.string "shop_open_date"
+    t.string "position"
+    t.float "longitude"
+    t.float "parallel"
+    t.integer "group_id"
+    t.string "group_name"
+    t.binary "shop_outer"
+    t.binary "shop_inner"
+    t.binary "shop_outer_s"
+    t.binary "shop_inner_s"
+  end
+
   create_table "user_machines", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "machine_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "shop_id", default: 0, null: false
+    t.integer "machine_num", default: 0, null: false
+    t.string "machine_short_name"
+    t.string "manufacture"
+    t.string "drum"
+    t.string "part_num"
+    t.string "machine_name"
+    t.string "capacity"
+    t.string "process"
+    t.string "payment"
+    t.integer "price", default: 0, null: false
+    t.integer "management_free", default: 0, null: false
+    t.float "interest"
+    t.binary "machine_image"
     t.index ["user_id"], name: "index_user_machines_on_user_id"
   end
 
