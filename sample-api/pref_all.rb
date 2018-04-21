@@ -24,15 +24,15 @@ all_data = ""
 
 # TODO each
 # puts shops
-# shops.each {|shop|
-  puts "shop_name: #{shops[0]['shop_id']} >> shop_owner_name: #{shops[0]['shop_owner_id']}"
-  path = "machineinfo?ANKOWNERID=#{shops[0][:shop_owner_id]}&ANKSHOPID=#{shops[0][:shop_id]}&ANKMACHINENUM=#{all_data}"
+shops.each {|shop|
+  puts "shop_name: #{shop[:shop_id]} >> shop_owner_name: #{shop[:shop_owner_name]}"
+  path = "machineinfo?ANKOWNERID=#{shop[:shop_owner_id]}&ANKSHOPID=#{shop[:shop_id]}&ANKMACHINENUM=#{all_data}"
   r = RestClient.get root + path, {:Authorization => "Bearer #{token}"}
   data = JSON.parse(r)
   data['DataModel'].map{|dm|
     puts "#{dm['ANKMACHINENUM']} #{dm['ANKMACHINENUM']} #{dm['MIXPARTNUM']} #{dm['KNJMACHNAME']}"
   }
-# }
+}
 
 # hoge = data['DataModel'].inject({}){|b, i| b[i['ANKMACHINENUM']] = (b[i['ANKMACHINENUM']] == nil ? 1 : b[i['ANKMACHINENUM']] + 1); b}
 # p hoge
