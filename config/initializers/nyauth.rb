@@ -1,0 +1,26 @@
+Nyauth.configure do |config|
+  #config.encryption_secret = ENV['NYAUTH_ENCRYPTION_SECRET'] || ENV['SECRET_KEY_BASE']
+  config.encryption_secret = '6c1f5e65def8ab193037e117ca7f0c75'
+  config.confirmation_expire_limit = 1.hour
+  config.reset_password_expire_limit = 1.hour
+  config.mail_delivery_method = :deliver_now
+  config.mailer_sender = 'from@example.com'
+  config.use_cookie_auth = false
+  config.redirect_path do |urls|
+    # config.redirect_path_after_sign_in = -> (client_name) {
+    #  if client_name == :admin
+    #    urls.admin_secret_notes_path
+    #  else
+    #    urls.root_path
+    #  end
+    #}
+    # config.redirect_path_after_sign_in = -> (client_name) {}
+    # config.redirect_path_after_sign_out = -> (client_name) {}
+    # config.redirect_path_after_registration = -> (client_name) {}
+    # config.redirect_path_after_create_request_confirmation = -> (client_name) {}
+    # config.redirect_path_after_update_confirmation = -> (client_name) {}
+    # config.redirect_path_after_reset_password_request = -> (client_name) {}
+    # config.redirect_path_after_reset_password = -> (client_name) {}
+    # config.redirect_path_after_update_password = -> (client_name) {}
+  end
+end
