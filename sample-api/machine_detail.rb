@@ -20,6 +20,6 @@ data = JSON.parse(r)['DataModel'][0]
   
 # p data['BINMACHINEIMAGE']
 
-# File.open("hoge.bmp", "wb") do |f| 
-#     f.write(Base64.decode64(data['BINMACHINEIMAGE']))
-# end
+File.open("hoge.png", "wb") do |f| 
+    f.write(Base64.decode64(data['BINMACHINEIMAGE']))
+end

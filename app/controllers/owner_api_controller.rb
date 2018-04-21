@@ -6,12 +6,14 @@ class OwnerApiController < ApplicationController
   end
 
   def get_machine_detail(shop_id, machine_id)
+    p shop_id, machine_id
     path = "machinedetailsinfo?ANKOWNERID=#{@shop_owner_id}&ANKSHOPID=#{shop_id}&ANKMACHINENUM=#{machine_id}"
     r = RestClient.get @root + path, {:Authorization => "Bearer #{@token}"}
     data = JSON.parse(r)['DataModel'][0]
     {
       machine_name: data['KNJMACHNAME'],
       shop_id: shop_id,
+      machine_id: machine_id,
       owner_id: @owner_id,
     }
   end

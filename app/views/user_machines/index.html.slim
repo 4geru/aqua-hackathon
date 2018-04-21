@@ -8,3 +8,4 @@ ul
         =machine[:machine_name]
       p
         =shop[:address]
+      = link_to '詳細ページ', "/user_machines/#{machine[:shop_id]}/#{machine[:machine_id]}"
