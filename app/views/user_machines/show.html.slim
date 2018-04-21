@@ -1,6 +1,17 @@
 h1 所有マシン詳細
--shop = @shops[@machine[:shop_id]]
-p 
-  =@machine[:machine_name]
 p
-  =shop[:address]
+  = @machine["KNJMACHNAME"]
+p
+  = @machine["ANKMACHINENUM"]
+p
+  = @machine["MIXPARTNUM"]
+p
+  = @shop["KNJSHOPNAME"]
+p
+  = "#{@shop["KNJPREFECTURES"]}#{@shop["KNJADDRESS"]}"
+p
+  = @anual_sales
+p
+  = image_tag outer_image_shop_path(@shop["ANKSHOPID"])
+p
+  = image_tag inner_image_shop_path(@shop["ANKSHOPID"])

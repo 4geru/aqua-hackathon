@@ -6,6 +6,18 @@ class AquaDataService
     @owner_id = owner_id
   end
 
+  def shop(shop_id)
+    shop = get("shopinfo?ANKOWNERID=#{@owner_id}&ANKSHOPID=#{shop_id}")
+    return nil if shop.empty?
+    shop[0]
+  end
+
+  def shop_image(shop_id)
+    image = get("shopimage?ANKOWNERID=#{@owner_id}&ANKSHOPID=#{shop_id}")
+    return nil if image.empty?
+    image[0]
+  end
+
   def shops
     @shops || @shops = get("shopinfo?ANKOWNERID=#{@owner_id}")
   end
@@ -16,8 +28,7 @@ class AquaDataService
 
   def machines
     shop_ids.map { |shop_id|
-      path = "machineinfo?ANKOWNERID=#{@owner_id}&ANKSHOPID=#{shop_id}&ANKMACHINENUM="
-      list = get(path)
+      list = get("machineinfo?ANKOWNERID=#{@owner_id}&ANKSHOPID=#{shop_id}&ANKMACHINENUM=")
       list.map { |h|
         h["ANKSHOPID"] = shop_id
         h
@@ -26,12 +37,30 @@ class AquaDataService
   end
 
   def machine_detail(shop_id, machine_num)
-    path = "machinedetailsinfo?ANKOWNERID=#{@owner_id}&ANKSHOPID=#{shop_id}&ANKMACHINENUM=#{machine_num}"
-    detail = get(path)
+    detail = get("machinedetailsinfo?ANKOWNERID=#{@owner_id}&ANKSHOPID=#{shop_id}&ANKMACHINENUM=#{machine_num}")
     return nil if detail.empty?
     detail[0]["ANKSHOPID"] = shop_id
     detail[0]["ANKMACHINENUM"] = machine_num
     detail[0]
+  end
+
+  def sales_details(shop_id, machine_num, today=Time.zone.today)
+    from = today.ago(1.years).strftime('%Y%m%d')
+    to = today.strftime('%Y%m%d')
+    #details = get("salesdetailsinfo?ANKOWNERID=#{@owner_id}&ANKSHOPID=#{shop_id}&DTMSALESDAYFROM=#{from}&DTMSALESDAYTO=#{to}")
+    details = get("salesdetailsinfo?ANKOWNERID=#{@owner_id}&ANKSHOPID=#{shop_id}")
+    return nil if details.empty?
+
+    details.select { |d| d["ANKMACHINENUM"] == machine_num }
+  end
+
+  def anual_sales(shop_id, machine_num, today=Time.zone.today)
+    sales_details = sales_details(shop_id, machine_num, today)
+    sales = sales_details.map { |s| s["NUMKINGAKU"].to_i }.sum
+    minmax = sales_details.map { |s| s["DTMSALESDAY"] }.minmax
+    min = Date.strptime(minmax[0], '%Y/%m/%d')
+    max = Date.strptime(minmax[1], '%Y/%m/%d')
+    (sales / (max - min) * 365).to_i
   end
 
   private
