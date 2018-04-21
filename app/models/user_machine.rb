@@ -1,0 +1,2 @@
+class UserMachine < ApplicationRecord
+end

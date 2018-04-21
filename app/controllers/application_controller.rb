@@ -1,11 +1,18 @@
 class ApplicationController < ActionController::Base
   include Nyauth::ControllerConcern
-  before_action -> { require_authentication! as: nyauth_client_name }
+
+  protect_from_forgery with: :exception
+
+  before_action :require_authentication
   helper_method :current_user
 
   private
 
   def current_user
     current_authenticated(as: :user)
+  end
+
+  def require_authentication
+    require_authentication! as: :user
   end
 end

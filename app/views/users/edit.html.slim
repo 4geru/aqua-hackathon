@@ -1,0 +1,15 @@
+h2 ユーザー編集
+
+= form_for @user, url: user_path, method: :put do |f|
+  .row
+    .col
+      | 表示名
+    .col
+      = f.text_field :nickname, value: @user.nickname
+  .row
+    .col
+      | オーナーID
+    .col
+      = f.text_field :owner_id, value: @user.owner_id
+  .row
+    = f.submit
