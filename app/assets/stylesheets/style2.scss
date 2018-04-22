@@ -1,0 +1,156 @@
+@charset "UTF-8";
+
+/* --------------------------------
+ * base
+ * -------------------------------- */
+
+body {
+  color: rgba(55, 55, 55, 0.87);
+  font-size: 14px;
+  font-family: "Hiragino Kaku Gothic ProN",  Meiryo,  sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  &::before, &::after {
+    box-sizing: border-box;
+  }
+}
+
+a {
+  &:link, &:visited, &:hover, &:active {
+    color: #338BF8;
+    text-decoration: none;
+  }
+}
+
+/*
+:root {
+  --blue: #338bf8;
+  --green: #18e5b1;
+  --black-87: rgba(55, 55, 55, 0.87);
+  --light-blue: #faf9ff;
+  --border: #cccccc;
+  --debider: #979797;
+  --black-54: rgba(55, 55, 55, 0.54);
+  --dark-blue: #3d5878;
+}
+*/
+
+/* --------------------------------
+ * parts
+ * -------------------------------- */
+
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.heading {
+  padding: 10px 12px;
+  letter-spacing: 1px;
+  font-size: 1.6rem;
+}
+
+.hidden {
+  display: none;
+}
+
+/* --------------------------------
+ * header
+ * -------------------------------- */
+
+.header {
+  background-color: #338BF8;
+}
+
+.wrapper {
+  margin: 0 auto;
+  width: 800px;
+}
+
+.logo {
+  float: left;
+  font-size: 24px;
+  line-height: 42px;
+  a {
+    color: #ffffff;
+  }
+}
+
+.global-nav {
+  text-align: right;
+  li {
+    display: inline;
+    margin-right: 24px;
+    font-size: 14px;
+    line-height: 42px;
+  }
+  a {
+    color: #ffffff;
+  }
+}
+
+.icon {
+  float: right;
+}
+
+/* --------------------------------
+ * typo
+ * -------------------------------- */
+
+.h1 {
+  font-size: 24px;
+  margin-bottom: 24px;
+}
+
+.h2 {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.price {
+  color: #18e5b1;
+  font-weight: 600;
+}
+
+.amount {
+  font-size: 24px;
+  font-weight: 300;
+}
+
+.desc {
+  color: rgba(55, 55, 55, 0.54);
+}
+
+/* --------------------------------
+ * main
+ * -------------------------------- */
+
+.main {
+  background-color: #faf9ff;
+  padding: 24px 0;
+}
+
+.content {
+  background-color: #ffffff;
+  padding: 24px;
+}
+
+/* --------------------------------
+ * footer
+ * -------------------------------- */
+
+.footer {
+  width: 100%;
+  padding: 20px 0 30px;
+  background: #3D5878;
+  color: #fff;
+}
+
+.copyright {
+  margin-top: 30px;
+  text-align: center;
+  letter-spacing: 1px;
+}
