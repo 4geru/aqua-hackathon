@@ -1,57 +1,58 @@
 .page-title
   h1 所有マシン詳細
   .card
-    = form_for(@user_machine) do |f|
-      = f.hidden_field :shop_id
-      = f.hidden_field :machine_num
-      h2 = "#{@user_machine.part_num} #{@user_machine.machine_name}"
-      p
-        | 製造番号:
-        = @user_machine.manufacture
-      p
-        | ドラム上下:
-        = @user_machine.drum
-      p
-        | 製造番号:
-        = @user_machine.part_num
-      p
-        | 機種:
-        = @user_machine.machine_name
-      p
-        | 容量:
-        = @user_machine.capacity
-      p
-        | 運転工程:
-        = @user_machine.process
-      p
-        | 支払方法:
-        = @user_machine.payment
-      p
-        | 機器イメージ:
-      p
-        = image_tag("/user_machines/#{@user_machine.shop_id}/#{@user_machine.machine_num}/image")
-      h2 店舗情報
-      p
-        | 店舗名:
-        = @shop["KNJSHOPNAME"]
-      p
-        | 住所:
-        = "#{@shop["KNJPREFECTURES"]}#{@shop["KNJADDRESS"]}"
-      p
-        | 店舗外観イメージ:
-      p
-        = image_tag outer_image_shop_path(@shop["ANKSHOPID"])
-      p
-        | 店舗内イメージ:
-      p
-        = image_tag inner_image_shop_path(@shop["ANKSHOPID"])
-      p
-        | 年間売上期待:
-        = @anual_sales
-      p
-        | 売り出し価格:
-        = f.text_field :price
-      p
-        | 管理費:
-        = f.text_field :management_free
-      = f.submit "売り出す", class: "btn"
+    .user_machines
+      = form_for(@user_machine) do |f|
+        = f.hidden_field :shop_id
+        = f.hidden_field :machine_num
+        h2 = "#{@user_machine.part_num} #{@user_machine.machine_name}"
+        p
+          | 製造番号:
+          = @user_machine.manufacture
+        p
+          | ドラム上下:
+          = @user_machine.drum
+        p
+          | 製造番号:
+          = @user_machine.part_num
+        p
+          | 機種:
+          = @user_machine.machine_name
+        p
+          | 容量:
+          = @user_machine.capacity
+        p
+          | 運転工程:
+          = @user_machine.process
+        p
+          | 支払方法:
+          = @user_machine.payment
+        p
+          | 機器イメージ:
+        p
+          = image_tag("/user_machines/#{@user_machine.shop_id}/#{@user_machine.machine_num}/image")
+        h2 店舗情報
+        p
+          | 店舗名:
+          = @shop["KNJSHOPNAME"]
+        p
+          | 住所:
+          = "#{@shop["KNJPREFECTURES"]}#{@shop["KNJADDRESS"]}"
+        p
+          | 店舗外観イメージ:
+        p
+          = image_tag outer_image_shop_path(@shop["ANKSHOPID"])
+        p
+          | 店舗内イメージ:
+        p
+          = image_tag inner_image_shop_path(@shop["ANKSHOPID"])
+        p
+          | 年間売上期待:
+          = @anual_sales
+        p
+          | 売り出し価格:
+          = f.text_field :price
+        p
+          | 管理費:
+          = f.text_field :management_free
+        = f.submit "売り出す", class: "btn"
