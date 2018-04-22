@@ -1,0 +1,16 @@
+.container-fluid
+  .row
+    - @results.each do |result|
+      - machine = result
+      - user = result.user
+      - shop = result.shop
+      .col-sm-4
+        .card
+          .card-body
+            h4.card-title 
+              = machine.machine_name
+            .row
+              .col-sm-5
+                = image_tag("/user_machines/#{shop.id}/#{machine.id}/image")
+              .col-sm-7
+                = "説明"
