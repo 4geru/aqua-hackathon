@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
 
   def aqua_api
     return unless current_user.present?
-    @aqua_api || @aqua_api = AquaDataService.new(current_user.owner_id || 46228846)
+    @aqua_api || @aqua_api = AquaDataService.new(current_user.owner_id == 0 ? 46228846 : current_user.owner_id)
   end
 
   def require_authentication

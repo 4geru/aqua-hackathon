@@ -37,24 +37,29 @@ class AquaDataService
   end
 
   def machine_detail(shop_id, machine_num)
+    machine_num = to_machine_num(machine_num)
     detail = get("machinedetailsinfo?ANKOWNERID=#{@owner_id}&ANKSHOPID=#{shop_id}&ANKMACHINENUM=#{machine_num}")
-    return nil if detail.empty?
+    image = get("machineimage?ANKOWNERID=#{@owner_id}&ANKSHOPID=#{shop_id}&ANKMACHINENUM=#{machine_num}")
+    return if detail.empty?
     detail[0]["ANKSHOPID"] = shop_id
     detail[0]["ANKMACHINENUM"] = machine_num
+    detail[0]["BINMACHINEIMAGE"] = image[0]["BINMACHINEIMAGE"] unless image.empty?
     detail[0]
   end
 
   def sales_details(shop_id, machine_num, today=Time.zone.today)
+    machine_num = to_machine_num(machine_num)
     from = today.ago(1.years).strftime('%Y%m%d')
     to = today.strftime('%Y%m%d')
     #details = get("salesdetailsinfo?ANKOWNERID=#{@owner_id}&ANKSHOPID=#{shop_id}&DTMSALESDAYFROM=#{from}&DTMSALESDAYTO=#{to}")
     details = get("salesdetailsinfo?ANKOWNERID=#{@owner_id}&ANKSHOPID=#{shop_id}")
-    return nil if details.empty?
+    return [] if details.empty?
 
     details.select { |d| d["ANKMACHINENUM"] == machine_num }
   end
 
   def anual_sales(shop_id, machine_num, today=Time.zone.today)
+    machine_num = to_machine_num(machine_num)
     sales_details = sales_details(shop_id, machine_num, today)
     sales = sales_details.map { |s| s["NUMKINGAKU"].to_i }.sum
     minmax = sales_details.map { |s| s["DTMSALESDAY"] }.minmax
@@ -66,6 +71,10 @@ class AquaDataService
   end
 
   private
+
+  def to_machine_num(machine_id)
+    sprintf("%02d",machine_id.to_i)
+  end
 
   def get(path)
     r = RestClient.get (SITE + path), {:Authorization => "Bearer #{TOKEN}"}

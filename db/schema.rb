@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_21_132525) do
+ActiveRecord::Schema.define(version: 2018_04_22_022337) do
 
   create_table "admins", force: :cascade do |t|
     t.string "nickname"
@@ -70,10 +70,11 @@ ActiveRecord::Schema.define(version: 2018_04_21_132525) do
     t.string "capacity"
     t.string "process"
     t.string "payment"
-    t.integer "price", default: 0, null: false
-    t.integer "management_free", default: 0, null: false
     t.float "interest"
     t.binary "machine_image"
+    t.integer "price"
+    t.integer "management_free"
+    t.integer "anual_sales"
     t.index ["user_id"], name: "index_user_machines_on_user_id"
   end
 
