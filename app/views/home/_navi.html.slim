@@ -1,25 +1,31 @@
 p.search_header
 
 form action="/machines/result" method="get" 
+  p.search_title
+    = "検索条件"
   .search_box
     label for="prefecture"  都道府県
-    select.search_input name="prefecture" 
-      = @prefectures.each do |prefecture|
+    select.search_input.large name="prefecture" 
+      - @prefectures.each do |prefecture|
         option
           = prefecture
   .search_box
     label for="price"  価格
-    select.search_input name="price_from" 
-      option 下限なし
-    | 
-    select.search_input name="price_to" 
-      option 上限なし
+    .row 
+      .col-md-6
+        select.search_input.small name="price_from" 
+          option 下限なし
+      .col-md-6
+        select.search_input.small name="price_to" 
+          option 上限なし
   .search_box
     label for="yield"  利回り
-    select.search_input name="yield_from" 
-      option 下限なし
-    | 
-    select.search_input name="yield_to" 
-      option 上限なし
-  input#form_submit_button.btn type="submit" value="決定" /
+    .row 
+      .col-md-6
+        select.search_input.small name="price_from" 
+          option 下限なし
+      .col-md-6
+        select.search_input.small name="price_to" 
+          option 上限なし
+  input#form_submit_button.btn.form_submit_button type="submit" value="決定" /
 

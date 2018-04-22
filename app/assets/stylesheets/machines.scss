@@ -1,3 +1,108 @@
-// Place all the styles related to the Machines controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+  background-color: #faf9ff;
+}
+
+.search_box {
+  width: 66px;
+  height: 66px;
+  border-radius: 4px;
+  background-color: #faf9ff;
+  font-family: NotoSansCJKjp;
+  font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: .338bf8;
+  .row {
+    width: 292px;
+  }
+}
+
+label {
+  width: 56px;
+  height: 20px;
+  font-family: NotoSansCJKjp;
+  font-size: 14px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: rgba(55, 55, 55, 0.87);
+  &.blue {
+    width: 86.4px;
+    height: 24px;
+    font-family: NotoSansCJKjp;
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: .338bf8;
+  }
+}
+
+select {
+  &.small {
+    width: 140px;
+    height: 32px;
+    border-radius: 4px;
+    background-color: #ffffff;
+    border: solid 1px #cccccc;
+  }
+  &.large {
+    width: 292px;
+    height: 32px;
+    border-radius: 4px;
+    background-color: #ffffff;
+    border: solid 1px #cccccc;
+  }
+}
+
+span {
+  &.product {
+    font-family: HiraginoSans-W3;
+    font-size: 24px;
+    text-align: left;
+    color: .2f2d3b;
+  }
+  &.price {
+    font-family: NotoSansCJKjp;
+    font-size: 24px;
+    font-weight: 500;
+    text-align: left;
+    color: .18e5b1;
+  }
+  &.owner {
+    font-family: NotoSansCJKjp;
+    font-size: 12px;
+    text-align: left;
+    color: rgba(55, 55, 55, 0.54);
+  }
+}
+
+input {
+  &.form_submit_button {
+    width: 288px;
+    height: 48px;
+    border-radius: 24px;
+    background-color: #338bf8;
+    color: #ffffff;
+  }
+  &[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    background: #338bf8;
+    color: #ffffff;
+    &:checked {
+      background: #338bf8;
+      color: #ffffff;
+    }
+  }
+}
