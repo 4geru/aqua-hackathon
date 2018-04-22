@@ -59,6 +59,8 @@
             | 年間売上期待
           td
             = "#{@anual_sales.to_s(:delimited)}円"
+      br /       
+      = link_to '購入する', "/machines/index", class: "btn form_submit_button", id: "form_submit_button"
 
   .card.user-machines-show
     h2
