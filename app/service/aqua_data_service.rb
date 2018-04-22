@@ -58,6 +58,20 @@ class AquaDataService
     details.select { |d| d["ANKMACHINENUM"] == machine_num }
   end
 
+  def sales_detail(shop_id, machine_num, today=Time.zone.today)
+    from = today.ago(1.years).strftime('%Y%m%d')
+    to = today.strftime('%Y%m%d')
+    details = get("salesdetailsinfo?ANKOWNERID=#{@owner_id}&ANKSHOPID=#{shop_id}")
+    sales = details.inject({}) {|sales, d|
+      date = d['DTMSALESDAY'].gsub('/', '-')
+      sales[date] = d['NUMKINGAKU'].to_i + (sales[date] || 0)
+      sales
+    }
+    return nil if sales.empty?
+
+    sales
+  end
+
   def anual_sales(shop_id, machine_num, today=Time.zone.today)
     machine_num = to_machine_num(machine_num)
     sales_details = sales_details(shop_id, machine_num, today)
