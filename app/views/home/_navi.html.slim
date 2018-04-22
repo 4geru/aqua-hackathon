@@ -4,7 +4,9 @@ form action="/machines/result" method="get"
   .search_box
     label for="prefecture"  都道府県
     select.search_input name="prefecture" 
-      option 東京都
+      = @prefectures.each do |prefecture|
+        option
+          = prefecture
   .search_box
     label for="price"  価格
     select.search_input name="price_from" 
@@ -19,9 +21,5 @@ form action="/machines/result" method="get"
     | 
     select.search_input name="yield_to" 
       option 上限なし
-  .search_box
-    label for="run_year"  年数
-    select.search_input name="run_year" 
-      option
   input#form_submit_button.btn type="submit" value="決定" /
 
