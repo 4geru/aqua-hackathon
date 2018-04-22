@@ -1,5 +1,66 @@
-h1 Machines#show
-p Find me in app/views/machines/show.html.slim
+.page-title
+  .h1 機材詳細
+  .card.user-machines-show
+    .h1 機材情報
+    .left
+      = image_tag("/user_machines/#{@user_machine.shop_id}/#{@user_machine.machine_num}/image")
+    .right.h2
+      table
+        tr
+          td
+            | 機材情報
+          td
+            = "#{@user_machine.part_num} #{@user_machine.machine_short_name}"
+        tr
+          td
+            | ドラム上下
+          td
+            = @user_machine.drum
+        tr
+          td
+            | 容量
+          td
+            = @user_machine.capacity
+        tr
+          td
+            | 運転工程
+          td
+            = @user_machine.process
+        tr
+          td
+            | 支払方法
+          td
+            = @user_machine.payment
+        tr
+          td
+            br
+        tr
+          td
+            | 店舗名
+          td
+            = "#{@shop['KNJSHOPNAME']}"
+        tr
+          td
+            | 所在地
+          td
+            = "〒 #{@shop['ANKPOSTNUM']}"
+            br
+            = "#{@shop["KNJPREFECTURES"]}#{@shop["KNJADDRESS"]}"
+        tr
+          td
+            | 所有者
+          td
+            = "#{@shop['KNJOWNERNAME']}"
+        tr
+          td
+            br
+        tr
+          td
+            | 年間売上期待
+          td
+            = "#{@anual_sales.to_s(:delimited)}円"
 
-= @machine
-= params
+  .card.user-machines-show
+    h2
+      = "運用実績"
+    = line_chart @chart_data
