@@ -1,2 +1,11 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.header {
+  background-color: #338bf8;
+  color: #fff;
+  font-size: 14px;
+  a {
+    color: #fff;
+  }
+}
