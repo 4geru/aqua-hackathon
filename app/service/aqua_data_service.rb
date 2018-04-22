@@ -60,6 +60,8 @@ class AquaDataService
     minmax = sales_details.map { |s| s["DTMSALESDAY"] }.minmax
     min = Date.strptime(minmax[0], '%Y/%m/%d')
     max = Date.strptime(minmax[1], '%Y/%m/%d')
+    diff = max - min == 0 ? 1 : max - min
+    (sales / diff * 365).to_i
     (sales / (max - min) * 365).to_i
   end
 
