@@ -1,0 +1,27 @@
+p.search_header
+
+form action="cgi-bin/formmail.cgi" method="get" 
+  .search_box
+    label for="prefecture"  都道府県
+    select.search_input name="prefecture" 
+      option 東京
+  .search_box
+    label for="price"  価格
+    select.search_input name="price_from" 
+      option 下限なし
+    | 
+    select.search_input name="price_to" 
+      option 上限なし
+  .search_box
+    label for="yield"  利回り
+    select.search_input name="yield_from" 
+      option 下限なし
+    | 
+    select.search_input name="yield_to" 
+      option 上限なし
+  .search_box
+    label for="run_year"  年数
+    select.search_input name="run_year" 
+      option
+  input#form_submit_button.btn type="submit" value="決定" /
+

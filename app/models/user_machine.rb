@@ -1,5 +1,6 @@
 class UserMachine < ApplicationRecord
   belongs_to :shop
+  belongs_to :user
 
   class << self
     def new_from_hash(user_id, machine)
