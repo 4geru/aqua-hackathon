@@ -1,2 +1,10 @@
-h1 Machines#index
-p Find me in app/views/machines/index.html.slim
+.page-title
+  .h1 機材詳細
+  .card.user-machines-show
+    .h1 購入完了
+    p
+      = "ご購入ありがとうございます。"
+    p 
+      = "購入した商品は「販売管理画面」で確認ができます。"
+    form action="/machines/index" method="get"      
+      input#form_submit_button.btn.form_submit_button type="submit" value="販売管理画面で確認する"
