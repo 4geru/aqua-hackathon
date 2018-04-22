@@ -16,7 +16,8 @@ Rails.application.routes.draw do
   resource :user, only: %i(edit update)
   resources :user_machines, only: %i(index create)
   get "user_machines/:shop_id/:machine_id" => "user_machines#show"
-  get "user_machines/:shop_id/:machine_id/image" => "user_machines#image"
+  get "user_machines/:shop_id/:machine_id/image" => "user_machines#image"  
+  get "machines/:user_id/:shop_id/:machine_id" => "machines#show"
   resources :shops, only: %(show) do
     member do
       get 'outer_image'

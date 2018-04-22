@@ -2,6 +2,12 @@ body {
   background-color: #faf9ff;
 }
 
+.card{
+  img {
+    width: 120px;
+  }
+}
+
 .search_box {
   width: 66px;
   height: 66px;
@@ -104,5 +110,11 @@ input {
       background: #338bf8;
       color: #ffffff;
     }
+  }
+}
+.result_container{
+  .price {
+    color: #18e5b1;
+    font-weight: 600;
   }
 }

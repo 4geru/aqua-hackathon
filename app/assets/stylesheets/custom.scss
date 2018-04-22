@@ -1,14 +1,14 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
 .card {
   background-color: #fff;
-  margin: 20px auto;
-  padding: 20px 20px;
-  width: 900px;
+  .user_machines{
+    margin: 20px auto;
+    padding: 20px 20px;
+    width: 900px;
 
-  img {
-    width: 120px;
   }
 }
 

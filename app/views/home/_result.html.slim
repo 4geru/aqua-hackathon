@@ -1,10 +1,10 @@
-.container-fluid
+.container-fluid.resultcontainer
   .row
     - @results.each do |result|
       - machine = result
       - user = result.user
       - shop = result.shop
-      .col-sm-4
+      .col-sm-6
         .card
           .card-body
             h4.card-title 
@@ -13,4 +13,31 @@
               .col-sm-5
                 = image_tag("/user_machines/#{shop.id}/#{machine.id}/image")
               .col-sm-7
-                = "説明"
+                = link_to '詳細ページ', "/machines/#{user.id}/#{shop.id}/#{machine.id}"
+                table
+                  tr
+                    td
+                      = "価格"
+                    td.price             
+                      = machine.price
+                  tr
+                    td
+                      = "利回り"
+                    td.price             
+                      = machine.interest
+                  tr
+                    td
+                      = "住所"
+                    td             
+                      = machine.shop.address
+                  tr
+                    td
+                      = "オーナー"
+                    td             
+                      = machine.user.nickname
+                  tr
+                    td
+                      = "掲載日時"
+                    td             
+                      = machine.created_at.strftime("Y年 %m月〜")
+
