@@ -24,6 +24,15 @@ a {
   }
 }
 
+.header{
+  a {
+  &:link, &:visited, &:hover, &:active {
+      color: white;
+      text-decoration: none;
+    }
+  }
+}
+
 /*
 :root {
   --blue: #338bf8;
