@@ -35,4 +35,6 @@ class Shop < ApplicationRecord
       end
     end
   end
+  
+  has_many :user_machines
 end

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'machines/index'
+  get 'machines/result'
+  get 'machines/show'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   # for admin
