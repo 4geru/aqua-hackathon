@@ -1,17 +1,42 @@
 h1 所有マシン一覧
-
-ul
-  -@machines.each do |machine|
-    li
-      -shop = @shops_hash[machine["ANKSHOPID"]]
-      p
-        =machine["ANKMACHINENUM"]
-      p
-        =machine["MIXPARTNUM"]
-      p
-        =machine["KNJMACHNAME"]
-      p
-        =shop["KNJSHOPNAME"]
-      p
-        ="#{shop["KNJPREFECTURES"]}#{shop["KNJADDRESS"]}"
-      = link_to '詳細ページ', "/user_machines/#{machine['ANKSHOPID']}/#{machine['ANKMACHINENUM']}"
+.row
+  .col-md-8
+    table.table
+      tr
+        td
+          p.machine_num
+            = "番号"
+        td
+          p.machine_name
+            = "機種"
+        td
+          p.machine_sale
+            = "月間売上"
+        td
+          p.machine_status
+            = "販売状況"
+        td
+          p.machine_link   
+            = "詳細"
+      - cnt = 1
+      -@machines.each do |machine|
+        tr
+          td
+            p.machine_num
+              = cnt
+              - cnt += 1
+          td
+            p.machine_name
+              =machine["KNJMACHNAME"]
+          td
+            p.machine_sale
+              = rand(1000) * 200
+          td
+            p.machine_status
+              - if @sales.include?([machine['ANKSHOPID'], machine['ANKMACHINENUM']])
+                = "販売中"
+              - else
+                = "所有中"
+          td
+            p.machine_link          
+              = link_to '詳細ページ', "/user_machines/#{machine['ANKSHOPID']}/#{machine['ANKMACHINENUM']}"

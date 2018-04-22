@@ -4,6 +4,8 @@ class UserMachinesController < ApplicationController
     @shops_hash = aqua_api.shops.each_with_object({}) { |s, h| h[s["ANKSHOPID"]] = s }
     create_shop
     @machines = aqua_api.machines
+    @sales = UserMachine.where( "user_id = ?", current_user.id )
+    .map{|m| [ m[:shop_id], m[:machine_num]] }
   end
 
   def show
