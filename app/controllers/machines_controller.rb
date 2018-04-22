@@ -3,6 +3,7 @@ class MachinesController < ApplicationController
   end
 
   def result
+    @prefectures = Shop.all.map{|shop| shop.prefecture }.uniq
     @results = Shop.where({
       prefecture: params[:prefecture]
     }).map{|shop|
