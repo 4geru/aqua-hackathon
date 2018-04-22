@@ -33,7 +33,7 @@ h1 所有マシン一覧
               = rand(1000) * 200
           td
             p.machine_status
-              - if @sales.include?([machine['ANKSHOPID'], machine['ANKMACHINENUM']])
+              - if @sales.include?([machine['ANKSHOPID'].to_i, machine['ANKMACHINENUM'].to_i])
                 = "販売中"
               - else
                 = "所有中"
